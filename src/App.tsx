@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { HomePage } from "./HomePage";
 import { SupportPage } from "./SupportPage";
+import { PrivacyPolicyPage } from "./PrivacyPolicyPage";
 import "./index.css";
 
 export function App() {
@@ -14,6 +15,8 @@ export function App() {
     const hash = window.location.hash.slice(1);
     if (hash === 'support') {
       setCurrentPage('support');
+    } else if (hash === 'privacy') {
+      setCurrentPage('privacy');
     }
 
     // Listen for hash changes
@@ -32,12 +35,22 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black relative">
       {currentPage === 'support' ? (
         <SupportPage onNavigate={navigate} />
+      ) : currentPage === 'privacy' ? (
+        <PrivacyPolicyPage onNavigate={navigate} />
       ) : (
         <HomePage onNavigate={navigate} />
       )}
+      <footer className="fixed bottom-0 right-0 p-4">
+        <button
+          onClick={() => navigate('privacy')}
+          className="text-xs text-gray-400 hover:text-gray-300 underline transition-colors"
+        >
+          Privacy Policy
+        </button>
+      </footer>
     </div>
   );
 }

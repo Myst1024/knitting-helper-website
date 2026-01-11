@@ -2,6 +2,8 @@
 
 A minimal static website for the Knitting & Crochet Helper iOS app, built with Bun and React.
 
+Deployed at https://myst1024.github.io/knitting-helper-website
+
 ## Development
 
 To install dependencies:
